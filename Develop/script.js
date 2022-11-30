@@ -56,12 +56,54 @@ function determineUpperCase() {
     upperCaseCheck = false;
     return upperCaseCheck;
   }
+}
 
-  // Do you want the PW to have numbers in it?
+// Do you want the PW to have numbers in it?
 
-  function determineNumbers() {
-    numberCheck = prompt("Do you want numbers in your PW \n Yes or No");
+function determineNumbers() {
+  numberCheck = prompt("Do you want numbers in your PW \n Yes or No");
+  // this makes the text all lowercase so it always inputs as "yes" instead of "Yes", but the code I have will pickup both anyways
+  numberCheck = numberCheck.toLowerCase();
+
+  if (numberCheck === "") {
+    alert("Please input Yes or No");
+    determineNumbers();
+  } else if (numberCheck === "yes" || "Yes" || "y" || "Y") {
+    numberCheck = true;
+    return numberCheck;
+  } else if (numberCheck === "no" || "No" || "n" || "N") {
+    numberCheck = false;
+    return numberCheck;
+  } else {
+    alert("Plese input Yes or No");
+    determineNumbers();
   }
+  return numberCheck;
+}
+
+//  Do you want the PW ti have special characters in it?
+
+function determineSpecial() {
+  specialCheck = prompt(
+    "Do you want special characters in your password? \n Yes or No"
+  );
+  // this makes the text all lowercase so it always inputs as "yes" instead of "Yes", but the code I have will pickup both anyways
+  specialcheck = specialCheck.toLowerCase();
+
+  if (specialcheck === "") {
+    alert("Please input Yes or No");
+    determineSpecial();
+  } else if (specialcheck === "yes" || "Yes" || "y" || "Y") {
+    specialcheck = true;
+    return specialcheck;
+  } else if (specialcheck === "no" || "No" || "n" || "N") {
+    specialcheck = false;
+    return specialcheck;
+  } else {
+    alert("Please input Yes or No");
+    determineSpecial();
+  }
+  return specialcheck;
 }
 
 // Write password to the #password input
