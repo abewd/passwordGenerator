@@ -1,10 +1,10 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var copyBtn = document.querySelector("#copy");
-var lowerCaseChar = "abcdefghijklmnopqrstuvwxyz";
-var upperCaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var specialCharacters = "!@#$%^&*()_+{}:<>?/";
-var numberCharacters = "0123456789";
+var lowerCaseCheck = "abcdefghijklmnopqrstuvwxyz";
+var uppercaseCheck = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var specialCharacterCheck = "!@#$%^&*()_+{}:<>?/";
+var numberCheck = "0123456789";
 
 // We need to give these variables input later on in the code,
 // so for now well create them so we can assign something to them later
@@ -19,18 +19,18 @@ var specialCharacterCheck;
 
 function determineLength() {
   passwordLength = prompt(
-    "Welcome to Abewd's sketchy PW generator. How long do you want your code to be? It can be between 8-128 chars."
+    "Welcome to the PW generator. \n How long do you want PW code to be? \nIt can be between 8-128 chars."
   );
 
   if (passwordLength < 8) {
-    alert("Your password must be greater than 8 characters");
+    alert("Your PW must be greater than 8 characters");
     determineLength();
   } else if (passwordLength > 128) {
-    alert("I said, it cant be more than 128 characters you idiot");
+    alert("Your PW cant be greather than 128 characters");
     determineLength();
   } else {
     alert(
-      "Ok, here are some additional questions so we can generate your code:"
+      "I have some more questions to ask you to help you create a new password"
     );
   }
   return passwordLength;
@@ -81,7 +81,7 @@ function determineNumbers() {
   return numberCheck;
 }
 
-//  Do you want the PW ti have special characters in it?
+//  Do you want the PW to have special characters in it?
 
 function determineSpecial() {
   specialCheck = prompt(
@@ -106,6 +106,47 @@ function determineSpecial() {
   return specialcheck;
 }
 
+// Combine functions input and generate the password
+
+function generatePassword() {
+  determineLength();
+  console.log(passwordLength);
+  determineUpperCase();
+  console.log(upperCaseCheck);
+  determineNumbers();
+  console.log(numberCheck);
+  determineSpecial();
+  console.log(specialCharacterCheck);
+
+  var characters = lowerCaseCheck;
+  var password = "";
+
+  if (uppercaseCheck && numberCheck && specialCharacterCheck) {
+    characters += uppercaseCheck + numberCheck + specialCharacterCheck;
+  } else if (uppercaseCheck && numberCheck) {
+    characters += uppercaseCheck + numberCheck;
+  } else if (numberCheck && specialCharacterCheck) {
+    characters += numberCheck + specialCharacterCheck;
+  } else if (uppercaseCheck && specialCharacterCheck) {
+    characters += uppercaseCheck + specialCharacterCheck;
+  } else if (uppercaseCheck) {
+    characters += uppercaseCheck;
+  } else if (numberCheck) {
+    characters += numberCheck;
+  } else if (specialCharacterCheck) {
+    characters += specialCharacterCheck;
+  } else {
+    characters === lowerCaseCheck;
+  }
+
+  for (var i = 0; i < passwordLength; i++) {
+    password += characters.charAt(
+      Math.floor(Math.random() * characters.length)
+    );
+  }
+  return password;
+}
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -116,3 +157,13 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+// Add event listener to copy password
+copyBtn.addEventListener("click", copyPassword);
+
+// Copying password code
+function copyPassword() {
+  var copyText = document.getElementById("password");
+  coptText.select();
+  document.execCommand("copy");
+}
