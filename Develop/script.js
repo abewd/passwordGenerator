@@ -11,6 +11,7 @@ var numberCharacters = "0123456789";
 
 var passwordLength;
 var upperCaseCheck;
+var numberCheck;
 var lowerCaseCheck;
 var specialCharacterCheck;
 
@@ -35,29 +36,32 @@ function determineLength() {
   return passwordLength;
 }
 
-// Do you want the PW to have uppercase letters in it? 
+// Do you want the PW to have uppercase letters in it?
 
-function determineUpperCase(){
-  upperCaseCheck = prompt({"Do you want uppercase letters in your PW? \n Yes or No"});
-  // .tolowercase = this makes all text lowercase 
+function determineUpperCase() {
+  upperCaseCheck = prompt(
+    "Do you want uppercase letters in your PW? \n Yes or No"
+  );
+  // .tolowercase = this makes all text lowercase
   upperCaseCheck = upperCaseCheck.toLowerCase();
 
   // If no input into the site, display a message
   if ("") {
     alert("Please input Yes or No");
     determineUpperCase();
-
-  } else if (upperCaseCheck === "yes") || (upperCaseCheck === "Yes") || (upperCaseCheck === "Y") || upperCaseCheck === "Y"{
+  } else if (upperCaseCheck === "yes" || "Yes" || "y" || "Y") {
     upperCaseCheck = true;
     return upperCaseCheck;
-
-  } else if (upperCaseCheck === "no") || (upperCaseCheck === "No") || (upperCaseCheck === "n") || upperCaseCheck === "N" {
+  } else if (upperCaseCheck === "no" || "No" || "n" || "N") {
     upperCaseCheck = false;
     return upperCaseCheck;
-
   }
 
+  // Do you want the PW to have numbers in it?
 
+  function determineNumbers() {
+    numberCheck = prompt("Do you want numbers in your PW \n Yes or No");
+  }
 }
 
 // Write password to the #password input
