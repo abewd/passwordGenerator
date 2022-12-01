@@ -1,10 +1,19 @@
 // Assignment Code
+// The query selector function is used to extract from the html to link a class
+// Hashtag is onbly for queryselector
+// getElementbyID and queryselector links the JS to the HTML to allow it to do things, like enable a button
 var generateBtn = document.querySelector("#generate");
 var copyBtn = document.querySelector("#copy");
 var lowerCaseCheck = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseCheck = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var specialCharacterCheck = "!@#$%^&*()_+{}:<>?/";
 var numberCheck = "0123456789";
+
+// NaN = not a number
+// When you would use and why: when you insert a string or boolean and it doesnt require one, it requires a number
+//  if (numberCheck == NaN) {
+//   alert("Hey, this isnt a number");
+//  }
 
 // We need to give these variables input later on in the code,
 // so for now well create them so we can assign something to them later
@@ -33,6 +42,9 @@ function determineLength() {
       "I have some more questions to ask you to help you create a new password"
     );
   }
+  // a return statement is the end of a funcion, youll still need to do the brackets to close it out
+  // return "this" says give me this value now
+  // Assigning "demo" with "cody" through code, it is not displaying it anywhere
   return passwordLength;
 }
 
@@ -140,6 +152,7 @@ function generatePassword() {
   }
 
   for (var i = 0; i < passwordLength; i++) {
+    // plus equals means add to w3 schools redo
     password += characters.charAt(
       Math.floor(Math.random() * characters.length)
     );
@@ -161,9 +174,9 @@ generateBtn.addEventListener("click", writePassword);
 // Add event listener to copy password
 copyBtn.addEventListener("click", copyPassword);
 
-// Copying password code
-function copyPassword() {
-  var copyText = document.getElementById("password");
-  coptText.select();
-  document.execCommand("copy");
-}
+// // Copying password code
+// function copyPassword() {
+//   var copyText = document.getElementById("password");
+//   coptText.select();
+//   document.execCommand("copy");
+// }
