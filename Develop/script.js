@@ -173,10 +173,3 @@ generateBtn.addEventListener("click", writePassword);
 
 // Add event listener to copy password
 copyBtn.addEventListener("click", copyPassword);
-
-// // Copying password code
-// function copyPassword() {
-//   var copyText = document.getElementById("password");
-//   coptText.select();
-//   document.execCommand("copy");
-// }
