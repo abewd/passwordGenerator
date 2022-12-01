@@ -96,26 +96,26 @@ function determineNumbers() {
 //  Do you want the PW to have special characters in it?
 
 function determineSpecial() {
-  specialCheck = prompt(
+  specialCharacterCheck = prompt(
     "Do you want special characters in your password? \n Yes or No"
   );
   // this makes the text all lowercase so it always inputs as "yes" instead of "Yes", but the code I have will pickup both anyways
-  specialcheck = specialCheck.toLowerCase();
+  specialCharacterCheck = specialCharacterCheck.toLowerCase();
 
-  if (specialcheck === "") {
+  if (specialCharacterCheck === "") {
     alert("Please input Yes or No");
     determineSpecial();
-  } else if (specialcheck === "yes" || "Yes" || "y" || "Y") {
-    specialcheck = true;
-    return specialcheck;
-  } else if (specialcheck === "no" || "No" || "n" || "N") {
-    specialcheck = false;
-    return specialcheck;
+  } else if (specialCharacterCheck === "yes" || "Yes" || "y" || "Y") {
+    specialCharacterCheck = true;
+    return specialCharacterCheck;
+  } else if (specialCharacterCheck === "no" || "No" || "n" || "N") {
+    specialCharacterCheck = false;
+    return specialCharacterCheck;
   } else {
     alert("Please input Yes or No");
     determineSpecial();
   }
-  return specialcheck;
+  return specialCharacterCheck;
 }
 
 // Combine functions input and generate the password
