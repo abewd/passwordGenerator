@@ -4,10 +4,10 @@
 // getElementbyID and queryselector links the JS to the HTML to allow it to do things, like enable a button
 var generateBtn = document.querySelector("#generate");
 var copyBtn = document.querySelector("#copy");
-var lowerCaseCheck = "abcdefghijklmnopqrstuvwxyz";
-var uppercaseCheck = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var specialCharacterCheck = "!@#$%^&*()_+{}:<>?/";
-var numberCheck = "0123456789";
+var lowerCaseSet = "abcdefghijklmnopqrstuvwxyz";
+var upperCaseSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var specialSet = "!@#$%^&*()_+{}:<>?/";
+var numberSet = "0123456789";
 
 // NaN = not a number
 // When you would use and why: when you insert a string or boolean and it doesnt require one, it requires a number
@@ -58,13 +58,23 @@ function determineUpperCase() {
   upperCaseCheck = upperCaseCheck.toLowerCase();
 
   // If no input into the site, display a message
-  if ("") {
+  if (upperCaseCheck === "") {
     alert("Please input Yes or No");
     determineUpperCase();
-  } else if (upperCaseCheck === "yes" || "Yes" || "y" || "Y") {
+  } else if (
+    upperCaseCheck === "yes" ||
+    upperCaseCheck === "Yes" ||
+    upperCaseCheck === "y" ||
+    upperCaseCheck === "Y"
+  ) {
     upperCaseCheck = true;
     return upperCaseCheck;
-  } else if (upperCaseCheck === "no" || "No" || "n" || "N") {
+  } else if (
+    upperCaseCheck === "no" ||
+    upperCaseCheck === "No" ||
+    upperCaseCheck === "n" ||
+    upperCaseCheck === "N"
+  ) {
     upperCaseCheck = false;
     return upperCaseCheck;
   }
@@ -80,10 +90,20 @@ function determineNumbers() {
   if (numberCheck === "") {
     alert("Please input Yes or No");
     determineNumbers();
-  } else if (numberCheck === "yes" || "Yes" || "y" || "Y") {
+  } else if (
+    numberCheck === "yes" ||
+    numberCheck === "Yes" ||
+    numberCheck === "y" ||
+    numberCheck === "Y"
+  ) {
     numberCheck = true;
     return numberCheck;
-  } else if (numberCheck === "no" || "No" || "n" || "N") {
+  } else if (
+    numberCheck === "no" ||
+    numberCheck === "No" ||
+    numberCheck === "n" ||
+    numberCheck === "N"
+  ) {
     numberCheck = false;
     return numberCheck;
   } else {
@@ -105,10 +125,20 @@ function determineSpecial() {
   if (specialCharacterCheck === "") {
     alert("Please input Yes or No");
     determineSpecial();
-  } else if (specialCharacterCheck === "yes" || "Yes" || "y" || "Y") {
+  } else if (
+    specialCharacterCheck === "yes" ||
+    specialCharacterCheck === "Yes" ||
+    specialCharacterCheck === "y" ||
+    specialCharacterCheck === "Y"
+  ) {
     specialCharacterCheck = true;
     return specialCharacterCheck;
-  } else if (specialCharacterCheck === "no" || "No" || "n" || "N") {
+  } else if (
+    specialCharacterCheck === "no" ||
+    specialCharacterCheck === "No" ||
+    specialCharacterCheck === "n" ||
+    specialCharacterCheck === "N"
+  ) {
     specialCharacterCheck = false;
     return specialCharacterCheck;
   } else {
@@ -130,25 +160,25 @@ function generatePassword() {
   determineSpecial();
   console.log(specialCharacterCheck);
 
-  var characters = lowerCaseCheck;
+  var characters = lowerCaseSet;
   var password = "";
 
-  if (uppercaseCheck && numberCheck && specialCharacterCheck) {
-    characters += uppercaseCheck + numberCheck + specialCharacterCheck;
-  } else if (uppercaseCheck && numberCheck) {
-    characters += uppercaseCheck + numberCheck;
+  if (upperCaseCheck && numberCheck && specialCharacterCheck) {
+    characters += upperCaseSet + numberSet + specialSet;
+  } else if (upperCaseCheck && numberCheck) {
+    characters += upperCaseSet + numberSet;
   } else if (numberCheck && specialCharacterCheck) {
-    characters += numberCheck + specialCharacterCheck;
-  } else if (uppercaseCheck && specialCharacterCheck) {
-    characters += uppercaseCheck + specialCharacterCheck;
-  } else if (uppercaseCheck) {
-    characters += uppercaseCheck;
+    characters += numberSet + specialSet;
+  } else if (upperCaseCheck && specialCharacterCheck) {
+    characters += upperCaseSet + specialSet;
+  } else if (upperCaseCheck) {
+    characters += upperCaseSet;
   } else if (numberCheck) {
-    characters += numberCheck;
+    characters += numberSet;
   } else if (specialCharacterCheck) {
-    characters += specialCharacterCheck;
+    characters += specialSet;
   } else {
-    characters === lowerCaseCheck;
+    characters === lowerCaseSet;
   }
 
   for (var i = 0; i < passwordLength; i++) {
@@ -171,5 +201,5 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// Add event listener to copy password
-copyBtn.addEventListener("click", copyPassword);
+// // Add event listener to copy password
+// copyBtn.addEventListener("click", copyPassword);
